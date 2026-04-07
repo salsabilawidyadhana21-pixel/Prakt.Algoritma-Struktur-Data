@@ -1,35 +1,52 @@
 public class MAHASISWABERPRESTASI25 {
-    MAHASISWA25[] listMhs = new MAHASISWA25[5];
-    int idx; 
+    MAHASISWA25 listMhs[] = new MAHASISWA25[5]; 
+    int idx;
 
-    void tambah(MAHASISWA25 m) {
+    void tambah(MAHASISWA25 mhs) {
         if (idx < listMhs.length) {
-            listMhs[idx] = m;
+            listMhs[idx] = mhs;
             idx++;
-        } else {
-            System.out.println("Data sudah penuh!");
         }
-    }
+    } 
 
     void tampil() {
-        for (int i = 0; i < idx; i++) {
-            listMhs[i].tampil();
-            System.out.println("-----------------------------");
+        for (MAHASISWA25 m : listMhs) {
+            if (m != null) {
+                m.tampilInformasi();
+                System.out.println("-------------------------");
+            }
+        }
+    } 
+    // Method Sequential Search sesuai langkah 2 
+    int sequentialSearching(double cari) {
+        int posisi = -1; 
+        for (int j = 0; j < listMhs.length; j++) { 
+            if (listMhs[j].ipk == cari) { 
+                posisi = j; 
+                break; 
+            }
+        }
+        return posisi; 
+    }
+
+    // Method tampilPosisi sesuai langkah 3 
+    void tampilPosisi(double x, int pos) {
+        if (pos != -1) { 
+            System.out.println("data mahasiswa dengan IPK: " + x + " ditemukan pada indeks " + pos); 
+        } else {
+            System.out.println("data " + x + " tidak ditemukan"); 
         }
     }
 
-    // 5.4.3 insertionSort - Mengurutkan IPK dari Terbesar ke Terkecil (DESC)
-    void insertionSort() {
-        for (int i = 1; i < idx; i++) {
-            MAHASISWA25 temp = listMhs[i];
-            int j = i;
-            
-            // PERUBAHAN: Tanda '<' membuat data yang lebih besar bergeser ke depan
-            while (j > 0 && listMhs[j - 1].ipk < temp.ipk) {
-                listMhs[j] = listMhs[j - 1];
-                j--;
-            }
-            listMhs[j] = temp;
+    // Method tampilDataSearch sesuai langkah 4 
+    void tampilDataSearch(double x, int pos) {
+        if (pos != -1) { 
+            System.out.println("nim\t: " + listMhs[pos].nim); 
+            System.out.println("nama\t: " + listMhs[pos].nama); 
+            System.out.println("kelas\t: " + listMhs[pos].kelas); 
+            System.out.println("ipk\t: " + x);
+        } else {
+            System.out.println("Data mahasiswa dengan IPK " + x + " tidak ditemukan");
         }
     }
 }
