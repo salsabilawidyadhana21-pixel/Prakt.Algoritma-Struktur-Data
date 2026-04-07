@@ -1,9 +1,8 @@
 public class MAHASISWABERPRESTASI25 {
-    // Kapasitas maksimal array adalah 5
     MAHASISWA25[] listMhs = new MAHASISWA25[5];
-    int idx; // Variabel ini untuk menghitung jumlah data yang masuk
+    int idx; // Menghitung jumlah data yang benar-benar terisi
 
-    // Menambahkan mahasiswa ke dalam array
+    // Menambahkan data mahasiswa ke array
     void tambah(MAHASISWA25 m) {
         if (idx < listMhs.length) {
             listMhs[idx] = m;
@@ -13,28 +12,27 @@ public class MAHASISWABERPRESTASI25 {
         }
     }
 
-    // Menampilkan data yang sudah terisi saja
+    // Menampilkan data mahasiswa yang terisi saja
     void tampil() {
         for (int i = 0; i < idx; i++) {
-            listMhs[i].tampil(); // Memanggil method tampil di class MAHASISWA25
+            listMhs[i].tampil();
             System.out.println("-----------------------------");
         }
     }
 
-    // Logika Selection Sort (Mencari nilai terkecil/ASC)
-    void selectionSort() {
-        // Gunakan 'idx' agar tidak mengecek laci yang kosong (null)
-        for (int i = 0; i < idx - 1; i++) {
-            int idxMin = i;
-            for (int j = i + 1; j < idx; j++) {
-                if (listMhs[j].ipk < listMhs[idxMin].ipk) {
-                    idxMin = j;
-                }
+    // 5.4 insertionSort - Mengurutkan IPK dari Terkecil ke Terbesar (ASC)
+    void insertionSort() {
+        for (int i = 1; i < idx; i++) {
+            MAHASISWA25 temp = listMhs[i];
+            int j = i;
+            
+            // Proses pergeseran (Shifting)
+            while (j > 0 && listMhs[j - 1].ipk > temp.ipk) {
+                listMhs[j] = listMhs[j - 1];
+                j--;
             }
-            // Proses penukaran (Swapping)
-            MAHASISWA25 tmp = listMhs[idxMin];
-            listMhs[idxMin] = listMhs[i];
-            listMhs[i] = tmp;
+            // Sisipkan data temp ke posisi yang tepat
+            listMhs[j] = temp;
         }
     }
 }
