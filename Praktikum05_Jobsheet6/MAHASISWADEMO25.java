@@ -1,4 +1,4 @@
-import java.util.Scanner; 
+import java.util.Scanner;
 
 public class MAHASISWADEMO25 {
     public static void main(String[] args) {
@@ -16,20 +16,20 @@ public class MAHASISWADEMO25 {
             String kelas = sc.nextLine();
             System.out.print("IPK   : ");
             double ipk = sc.nextDouble();
-            sc.nextLine(); // Pembersih buffer
+            sc.nextLine(); 
 
             MAHASISWA25 m = new MAHASISWA25(nim, nama, kelas, ipk);
-            list.tambah(m); 
+            list.tambah(m);
             System.out.println();
         }
 
         System.out.println("Data sebelum sorting:");
-        list.tampil(); 
-
-        System.out.println("Setelah sorting (Bubble Sort):");
-        list.bubbleSort();
         list.tampil();
-        
+
+        System.out.println("Data setelah Selection Sort (IPK Terkecil ke Terbesar):");
+        list.selectionSort(); // Memanggil logika yang sudah kamu buat di file sebelah
+        list.tampil();
+
         sc.close();
     }
 }
