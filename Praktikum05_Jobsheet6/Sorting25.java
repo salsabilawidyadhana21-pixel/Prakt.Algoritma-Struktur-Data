@@ -2,7 +2,6 @@ public class Sorting25 {
     int[] data;
     int jumData;
 
-    // Konstruktor
     Sorting25(int Data[], int jmlDat) {
         jumData = jmlDat;
         data = new int[jmlDat];
@@ -11,7 +10,7 @@ public class Sorting25 {
         }
     }
 
-    // Method Bubble Sort (dari bagian a)
+    // Method Bubble Sort (Bagian a)
     void bubbleSort() {
         int temp = 0;
         for (int i = 0; i < jumData - 1; i++) {
@@ -25,7 +24,7 @@ public class Sorting25 {
         }
     }
 
-    // --- Method Selection Sort (Praktikum 1 bagian b) ---
+    // Method Selection Sort (Bagian b)
     void selectionSort() {
         for (int i = 0; i < jumData - 1; i++) {
             int minId = i;
@@ -34,14 +33,25 @@ public class Sorting25 {
                     minId = j;
                 }
             }
-            // Swap elemen terkecil dengan elemen di posisi i
             int temp = data[minId];
             data[minId] = data[i];
             data[i] = temp;
         }
     }
 
-    // Method tampil data
+    // --- Method Insertion Sort (Praktikum 1 bagian c) ---
+    void insertionSort() {
+        for (int i = 1; i < jumData; i++) {
+            int temp = data[i];
+            int j = i - 1;
+            while (j >= 0 && data[j] > temp) {
+                data[j + 1] = data[j];
+                j--;
+            }
+            data[j + 1] = temp;
+        }
+    }
+
     void tampil() {
         for (int i = 0; i < jumData; i++) {
             System.out.print(data[i] + " ");
