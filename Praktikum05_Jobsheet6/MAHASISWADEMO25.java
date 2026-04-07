@@ -6,6 +6,7 @@ public class MAHASISWADEMO25 {
         MAHASISWABERPRESTASI25 list = new MAHASISWABERPRESTASI25();
         int jmlMhs = 5;
 
+        // Proses input data mahasiswa
         for (int i = 0; i < jmlMhs; i++) {
             System.out.println("Masukkan Data Mahasiswa ke-" + (i + 1));
             System.out.print("NIM   : ");
@@ -16,7 +17,7 @@ public class MAHASISWADEMO25 {
             String kelas = sc.nextLine();
             System.out.print("IPK   : ");
             double ipk = sc.nextDouble();
-            sc.nextLine(); 
+            sc.nextLine(); // Membersihkan buffer
 
             MAHASISWA25 m = new MAHASISWA25(nim, nama, kelas, ipk);
             list.tambah(m);
@@ -26,8 +27,9 @@ public class MAHASISWADEMO25 {
         System.out.println("Data sebelum sorting:");
         list.tampil();
 
-        System.out.println("Data setelah Selection Sort (IPK Terkecil ke Terbesar):");
-        list.selectionSort(); // Memanggil logika yang sudah kamu buat di file sebelah
+        // Memanggil Insertion Sort
+        System.out.println("Data setelah Insertion Sort (IPK ASC):");
+        list.insertionSort();
         list.tampil();
 
         sc.close();
