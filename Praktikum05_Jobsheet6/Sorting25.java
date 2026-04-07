@@ -11,12 +11,12 @@ public class Sorting25 {
         }
     }
 
-    // Method Bubble Sort (Ascending)
+    // Method Bubble Sort (ascending)
     void bubbleSort() {
         int temp = 0;
         for (int i = 0; i < jumData - 1; i++) {
             for (int j = 1; j < jumData - i; j++) {
-                if (data[j - 1] > data[j]) { // Proses pertukaran
+                if (data[j - 1] > data[j]) { // Proses Pertukaran
                     temp = data[j];
                     data[j] = data[j - 1];
                     data[j - 1] = temp;
