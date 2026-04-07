@@ -1,9 +1,9 @@
-public class Sorting25 {
+public class SORTING25 {
     int[] data;
     int jumData;
 
-    // Konstruktor untuk inisialisasi data [cite: 88]
-    Sorting25(int Data[], int jmlDat) {
+    // Konstruktor untuk inisialisasi data
+    SORTING25(int Data[], int jmlDat) {
         jumData = jmlDat;
         data = new int[jmlDat];
         for (int i = 0; i < jumData; i++) {
@@ -11,12 +11,12 @@ public class Sorting25 {
         }
     }
 
-    // Method Bubble Sort (Ascending) [cite: 100]
+    // Method Bubble Sort (Ascending)
     void bubbleSort() {
         int temp = 0;
         for (int i = 0; i < jumData - 1; i++) {
             for (int j = 1; j < jumData - i; j++) {
-                if (data[j - 1] > data[j]) { // Proses pertukaran [cite: 103]
+                if (data[j - 1] > data[j]) { // Proses pertukaran
                     temp = data[j];
                     data[j] = data[j - 1];
                     data[j - 1] = temp;
@@ -25,7 +25,7 @@ public class Sorting25 {
         }
     }
 
-    // Method untuk menampilkan isi array [cite: 113]
+    // Method untuk menampilkan isi array
     void tampil() {
         for (int i = 0; i < jumData; i++) {
             System.out.print(data[i] + " ");
