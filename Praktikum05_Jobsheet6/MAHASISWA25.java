@@ -1,7 +1,5 @@
 public class MAHASISWA25 {
-    String nim;
-    String nama;
-    String kelas;
+    String nim, nama, kelas;
     double ipk;
 
     MAHASISWA25(String ni, String nm, String kls, double ip) {
