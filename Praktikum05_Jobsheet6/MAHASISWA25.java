@@ -1,23 +1,20 @@
 public class MAHASISWA25 {
-    String nim;
-    String nama;
-    String kelas;
+    String nim, nama, kelas;
     double ipk;
 
-    MAHASISWA25() {
+    // Constructor 
+    MAHASISWA25(String ni, String na, String k, double i) {
+        nim = ni;
+        nama = na;
+        kelas = k;
+        ipk = i;
     }
 
-    MAHASISWA25(String nm, String name, String kls, double ip) {
-        nim = nm;
-        nama = name;
-        kelas = kls;
-        ipk = ip;
-    }
-
-    void tampilInformasi() {
-        System.out.println("Nama: " + nama);
-        System.out.println("NIM: " + nim);
-        System.out.println("Kelas: " + kelas);
-        System.out.println("IPK: " + ipk);
+    // TAMBAHKAN METHOD INI:
+    void tampil() {
+        System.out.println("NIM   = " + nim);
+        System.out.println("Nama  = " + nama);
+        System.out.println("Kelas = " + kelas);
+        System.out.println("IPK   = " + ipk);
     }
 }
