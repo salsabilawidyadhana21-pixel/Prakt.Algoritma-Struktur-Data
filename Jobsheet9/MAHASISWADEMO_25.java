@@ -55,6 +55,7 @@ class StackTugasMahasiswa_25 {
         }
     }
 
+    // Perbaikan no.1 => tambah peek
     Mahasiswa_25 peek() {
         if (!isEmpty()) {
             return stack[top];
@@ -63,6 +64,21 @@ class StackTugasMahasiswa_25 {
         }
     }
 
+    // Tambahan no.4 => lihat terbawah
+    Mahasiswa_25 peekBottom() {
+        if (!isEmpty()) {
+            return stack[0];
+        } else {
+            return null;
+        }
+    }
+
+    // Tambahan no.5 => hitung jumlah
+    int count() {
+        return top + 1;
+    }
+
+    // Perbaikan no.1 => format output sesuai jobsheet
     void print() {
         System.out.println("\n--- Isi Tumpukan Tugas (Teratas ke Terbawah) ---");
         for (int i = top; i >= 0; i--) {
@@ -77,19 +93,27 @@ public class MAHASISWADEMO_25 {
 
         StackTugasMahasiswa_25 stm = new StackTugasMahasiswa_25(5);
 
+        // Perbaikan no.1 => urutan sesuai jobsheet
         // Tambah data
         stm.push(new Mahasiswa_25("2341720001", "Andi", "TI-1A"));
         stm.push(new Mahasiswa_25("2341720002", "Budi", "TI-1A"));
         stm.push(new Mahasiswa_25("2341720003", "Citra", "TI-1A"));
 
-        // Tampilkan
+        // Tampilkan isi stack
         stm.print();
 
-        // Peek
+        // Peek (teratas)
         Mahasiswa_25 atas = stm.peek();
         System.out.println("\nTugas teratas: " + atas.nama + " (" + atas.nim + ")");
 
-        // Pop + nilai
+        // Tambahan no.4
+        Mahasiswa_25 bawah = stm.peekBottom();
+        System.out.println("Tugas terbawah: " + bawah.nama + " (" + bawah.nim + ")");
+
+        // Tambahan no.5
+        System.out.println("Jumlah tugas saat ini: " + stm.count());
+
+        // Perbaikan no.1 => proses penilaian
         System.out.println("\n--- Proses Penilaian oleh Dosen ---");
         Mahasiswa_25 dinilai = stm.pop();
         if (dinilai != null) {
@@ -101,5 +125,8 @@ public class MAHASISWADEMO_25 {
         // Kondisi akhir
         System.out.println("\n--- Kondisi Akhir Tumpukan ---");
         stm.print();
+
+        // Tambahan no.5
+        System.out.println("Jumlah tugas sekarang: " + stm.count());
     }
 }
