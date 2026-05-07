@@ -104,4 +104,15 @@ public class AntrianLayanan {
     public void getJumlahAntrian() {
         System.out.println("Jumlah antrian saat ini = " + size);
     }
+
+    // ================= MODIFIKASI =================
+    public void LihatAkhir() {
+        if (!IsEmpty()) {
+            System.out.println("Antrian paling belakang:");
+            data[rear].tampilkanData();
+        } else {
+            System.out.println("Queue masih kosong");
+        }
+    }
+    // =================================================
 }
