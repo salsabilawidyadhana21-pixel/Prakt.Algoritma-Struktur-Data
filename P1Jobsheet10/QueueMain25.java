@@ -2,19 +2,21 @@ import java.util.Scanner;
 
 public class QueueMain25 {
     public static void menu() {
-        System.out.println("Masukkan operasi yang diinginkan:");
-        System.out.println("1. Enqueue");
-        System.out.println("2. Dequeue");
-        System.out.println("3. Print");
-        System.out.println("4. Peek");
-        System.out.println("5. Clear");
+        System.out.println("\nMasukkan operasi yang diinginkan:");
+        System.out.println("1. Enqueue (Tambah Data)");
+        System.out.println("2. Dequeue (Hapus Data)");
+        System.out.println("3. Print (Cetak Semua)");
+        System.out.println("4. Peek (Lihat Depan)");
+        System.out.println("5. Clear (Kosongkan)");
         System.out.println("--------------------");
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.print("Masukkan kapasitas queue: ");
         int n = sc.nextInt();
+        
         Queue25 Q = new Queue25(n);
         int pilih;
 
@@ -43,6 +45,8 @@ public class QueueMain25 {
                     Q.clear();
                     break;
             }
-        } while (pilih >= 1 && pilih <= 5);
+        } while (pilih >= 1 && pilih <= 5); 
+        
+        sc.close();
     }
 }
