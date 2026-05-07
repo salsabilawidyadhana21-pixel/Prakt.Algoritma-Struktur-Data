@@ -9,6 +9,12 @@ public class LayananAkademikSIAKAD {
         System.out.println("3. Cek Antrian Terdepan");
         System.out.println("4. Cek Semua Antrian");
         System.out.println("5. Cek Jumlah Antrian");
+
+        // ================= MODIFIKASI =================
+        // Menambahkan menu cek antrian paling belakang
+        System.out.println("6. Cek Antrian Paling Belakang");
+        // =================================================
+
         System.out.print("Pilih menu: ");
     }
 
@@ -65,7 +71,18 @@ public class LayananAkademikSIAKAD {
                 case 5:
                     antrian.getJumlahAntrian();
                     break;
+
+                // ================= MODIFIKASI =================
+                // Memanggil method LihatAkhir()
+                case 6:
+                    antrian.LihatAkhir();
+                    break;
+                // =================================================
             }
-        } while (pilihan >= 1 && pilihan <= 5);
+
+        // ================= MODIFIKASI =================
+        // Mengubah batas perulangan sampai menu 6
+        } while (pilihan >= 1 && pilihan <= 6);
+        // =================================================
     }
 }
