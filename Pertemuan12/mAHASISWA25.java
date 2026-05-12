@@ -1,12 +1,8 @@
 public class mAHASISWA25 {
-    String nim;
-    String nama;
-    String kelas;
+    String nim, nama, kelas;
     double ipk;
 
-    public mAHASISWA25() {
-    }
-
+    // Constructor tetap sama
     public mAHASISWA25(String nim, String nama, String kelas, double ipk) {
         this.nim = nim;
         this.nama = nama;
@@ -14,10 +10,8 @@ public class mAHASISWA25 {
         this.ipk = ipk;
     }
 
-    public void tampilInformasi() {
-        System.out.println("NIM   : " + nim);
-        System.out.println("Nama  : " + nama);
-        System.out.println("Kelas : " + kelas);
-        System.out.println("IPK   : " + ipk);
+    
+    public void tampilData() {
+        System.out.print("NIM: " + nim + " | Nama: " + nama + " | Kelas: " + kelas + " | IPK: " + ipk);
     }
 }
