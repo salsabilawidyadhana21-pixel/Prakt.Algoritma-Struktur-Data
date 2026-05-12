@@ -25,25 +25,24 @@ public class DoubleLinkedListMain25 {
                     list.addLast(inputMahasiswa(scan));
                     break;
                 case 3:
-                    System.out.print("Masukkan NIM yang dicari sebagai acuan: ");
+                    System.out.print("Masukkan NIM yang dicari: ");
                     String keyNim = scan.nextLine();
-                    System.out.println("Masukkan data mahasiswa baru: ");
+                    System.out.println("Masukkan data baru: ");
                     list.insertAfter(keyNim, inputMahasiswa(scan));
                     break;
-                case 6: // Fitur No. 6
+                case 6:
                     list.print();
                     break;
                 case 0:
                     System.out.println("Program selesai.");
                     break;
                 default:
-                    System.out.println("Pilihan tidak valid.");
+                    System.out.println("Menu tidak valid.");
             }
         } while (pilihan != 0);
         scan.close();
     }
 
-    // Fitur No. 5: Fungsi pembantu untuk input data objek melalui konstruktor
     public static mahasiswa25 inputMahasiswa(Scanner scan) {
         System.out.print("Masukkan NIM   : ");
         String nim = scan.nextLine();
@@ -53,7 +52,7 @@ public class DoubleLinkedListMain25 {
         String kelas = scan.nextLine();
         System.out.print("Masukkan IPK   : ");
         double ipk = scan.nextDouble();
-        scan.nextLine(); 
+        scan.nextLine();
         return new mahasiswa25(nim, nama, kelas, ipk);
     }
 }
