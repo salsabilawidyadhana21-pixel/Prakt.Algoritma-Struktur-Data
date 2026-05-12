@@ -53,9 +53,9 @@ public class DoubleLinkedList25 {
             current.next.prev = newNode;
             current.next = newNode;
         }
+        System.out.println("Data berhasil disisipkan setelah NIM " + keyNim);
     }
 
-    // Fitur No. 6: Menampilkan seluruh isi list
     public void print() {
         if (isEmpty()) {
             System.out.println("Linked List masih kosong.");
