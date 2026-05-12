@@ -1,18 +1,40 @@
+import java.util.Scanner;
+
 public class SLLMain25 {
     public static void main(String[] args) {
+        // Membuat scanner dengan nama sc25 (sesuai nomor absen)
+        Scanner sc25 = new Scanner(System.in);
         SingleLinkedList25 singLL = new SingleLinkedList25();
 
-        // Contoh input data menggunakan identitas Saya
-        mAHASISWA25 m1 = new mAHASISWA25("2341720125", "Salsabila Widyadhana", "TI-1H", 3.8);
-        mAHASISWA25 m2 = new mAHASISWA25("2341720100", "Mahasiswa A", "TI-1H", 3.5);
-        mAHASISWA25 m3 = new mAHASISWA25("2341720200", "Mahasiswa B", "TI-1H", 3.7);
+        System.out.println("======= INPUT DATA LINKED LIST MAHASISWA =======");
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumlah = sc25.nextInt();
+        sc25.nextLine(); // Penting: Membersihkan enter dari memory
 
-        // Menjalankan operasi dasar
-        singLL.addFirst(m1);
-        singLL.addLast(m2);
-        singLL.insertAfter("2341720125", m3);
+        for (int i = 0; i < jumlah; i++) {
+            System.out.println("\n--- Data Mahasiswa Ke-" + (i + 1) + " ---");
+            System.out.print("Masukkan NIM   : ");
+            String nim = sc25.nextLine();
+            System.out.print("Masukkan Nama  : ");
+            String nama = sc25.nextLine();
+            System.out.print("Masukkan Kelas : ");
+            String kelas = sc25.nextLine();
+            System.out.print("Masukkan IPK   : ");
+            double ipk = sc25.nextDouble();
+            sc25.nextLine(); // Membersihkan enter lagi sebelum loop berikutnya
 
-        // Cetak Hasil untuk verifikasi
+            // Membuat objek baru dari hasil input
+            mAHASISWA25 mhsBaru = new mAHASISWA25(nim, nama, kelas, ipk);
+
+            // Menambahkan objek tersebut ke dalam list (contoh menggunakan addLast)
+            singLL.addLast(mhsBaru);
+        }
+
+        // Menampilkan semua data yang sudah dimasukkan
+        System.out.println("\n===============================================");
+        System.out.println("HASIL DATA DALAM LINKED LIST:");
         singLL.print();
+        
+        sc25.close();
     }
 }
