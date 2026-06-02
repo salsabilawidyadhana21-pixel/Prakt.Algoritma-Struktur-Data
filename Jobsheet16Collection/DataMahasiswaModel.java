@@ -1,4 +1,4 @@
-public class DataMahasiswaModel {
+public class DataMahasiswaModel implements Comparable<DataMahasiswaModel> {
     String nim;
     String nama;
     String notelp;
@@ -10,6 +10,12 @@ public class DataMahasiswaModel {
         this.nim = nim;
         this.nama = nama;
         this.notelp = notelp;
+    }
+
+    // Modifikasi No. 2 & 3: Untuk mendukung pencarian binary dan sorting otomatis
+    @Override
+    public int compareTo(DataMahasiswaModel mhs) {
+        return this.nim.compareTo(mhs.nim);
     }
 
     @Override
