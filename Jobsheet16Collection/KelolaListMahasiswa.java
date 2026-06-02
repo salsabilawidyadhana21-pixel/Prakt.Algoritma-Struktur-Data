@@ -1,67 +1,70 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class KelolaListMahasiswa {
-    // Membuat collection ArrayList untuk menampung objek mahasiswa
     List<DataMahasiswaModel> mahasiswas = new ArrayList<>();
 
-    // 1. Method untuk menambahkan objek mahasiswa menggunakan varargs
     public void tambah(DataMahasiswaModel... mahasiswa) {
         mahasiswas.addAll(Arrays.asList(mahasiswa));
     }
 
-    // 2. Method untuk menghapus mahasiswa berdasarkan indeks
-    public void hapus(int index) {
-        mahasiswas.remove(index);
-    }
-
-    // 3. Method untuk mengubah data mahasiswa berdasarkan indeks
     public void update(int index, DataMahasiswaModel mhs) {
         mahasiswas.set(index, mhs);
     }
 
-    // 4. Method untuk menampilkan seluruh list mahasiswa menggunakan Stream API
     public void tampil() {
-        mahasiswas.stream().forEach(mhs -> {
-            System.out.println("" + mhs.toString());
-        });
+        mahasiswas.stream().forEach(mhs -> System.out.println(mhs.toString()));
     }
 
-    // 5. Method fungsi pencarian indeks berdasarkan NIM (Linear Search)
-    int linearSearch(String nim) {
-        for (int i = 0; i < mahasiswas.size(); i++) {
-            if (nim.equals(mahasiswas.get(i).nim)) {
-                return i;
-            }
-        }
-        return -1;
+    // Modifikasi Pertanyaan No. 2: Menggunakan Binary Search dari Collections
+    int binarySearch(String nim) {
+        sortingAscending(); // Wajib di-sorting dulu sebelum binary search dilakukan
+        DataMahasiswaModel dummy = new DataMahasiswaModel(nim, "", "");
+        return Collections.binarySearch(mahasiswas, dummy);
+    }
+
+    // Modifikasi Pertanyaan No. 3: Fungsi Sorting Ascending
+    public void sortingAscending() {
+        Collections.sort(mahasiswas);
+    }
+
+    // Modifikasi Pertanyaan No. 3: Fungsi Sorting Descending
+    public void sortingDescending() {
+        Collections.sort(mahasiswas, Collections.reverseOrder());
     }
 
     public static void main(String[] args) {
         KelolaListMahasiswa klm = new KelolaListMahasiswa();
         
-        // Membuat instansiasi objek data mahasiswa awal
-        DataMahasiswaModel m = new DataMahasiswaModel("201234", "Noureen", "021xx1");
-        DataMahasiswaModel m1 = new DataMahasiswaModel("201235", "Akhleema", "021xx2");
-        DataMahasiswaModel m2 = new DataMahasiswaModel("201236", "Shannum", "021xx3");
+        // Memasukkan data awal mahasiswa
+        klm.tambah(
+            new DataMahasiswaModel("201235", "Akhleema", "021xx2"),
+            new DataMahasiswaModel("201234", "Noureen", "021xx1"),
+            new DataMahasiswaModel("201236", "Shannum", "021xx3")
+        );
 
-        // Menambahkan objek-objek mahasiswa ke dalam list
-        klm.tambah(m, m1, m2);
-
-        // Menampilkan daftar mahasiswa mula-mula
-        System.out.println("--- Daftar Mahasiswa Awal Percobaan ---");
+        System.out.println("--- Data Awal ---");
         klm.tampil();
 
-        // Melakukan pembaruan (update) data mahasiswa
-        // Mencari indeks mahasiswa dengan NIM "201235" terlebih dahulu menggunakan linearSearch
-        int indeksKetemu = klm.linearSearch("201235");
-        if (indeksKetemu != -1) {
+        // Implementasi Modifikasi No. 2: Cari dan update menggunakan Binary Search
+        int indeksKetemu = klm.binarySearch("201235");
+        if (indeksKetemu >= 0) {
             klm.update(indeksKetemu, new DataMahasiswaModel("201235", "Akhleema Lela", "021xx2"));
         }
 
-        // Menampilkan daftar mahasiswa setelah proses pembaruan data
-        System.out.println("\n--- Daftar Mahasiswa Setelah Di-update ---");
+        System.out.println("\n--- Hasil Modifikasi No. 2 (Update via Binary Search) ---");
+        klm.tampil();
+
+        // Implementasi Modifikasi No. 3: Hasil Sorting Ascending
+        klm.sortingAscending();
+        System.out.println("\n--- Hasil Modifikasi No. 3 (Sorting Ascending) ---");
+        klm.tampil();
+
+        // Implementasi Modifikasi No. 3: Hasil Sorting Descending
+        klm.sortingDescending();
+        System.out.println("\n--- Hasil Modifikasi No. 3 (Sorting Descending) ---");
         klm.tampil();
     }
 }
