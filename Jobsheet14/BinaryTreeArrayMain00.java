@@ -1,25 +1,21 @@
 public class BinaryTreeArrayMain00 {
+
     public static void main(String[] args) {
 
-        BinaryTreeArray00 bta = new BinaryTreeArray00();
+        BinaryTreeArray00 tree = new BinaryTreeArray00();
 
-        Mahasiswa00 m1 = new Mahasiswa00("244160121", "Ali", "A", 3.57);
-        Mahasiswa00 m2 = new Mahasiswa00("244160185", "Candra", "C", 3.41);
-        Mahasiswa00 m3 = new Mahasiswa00("244160221", "Badar", "B", 3.75);
-        Mahasiswa00 m4 = new Mahasiswa00("244160220", "Dewi", "B", 3.35);
-        Mahasiswa00 m5 = new Mahasiswa00("244160131", "Devi", "A", 3.48);
-        Mahasiswa00 m6 = new Mahasiswa00("244160205", "Ehsan", "D", 3.61);
-        Mahasiswa00 m7 = new Mahasiswa00("244160170", "Fajar", "B", 3.86);
+        tree.add(new Mahasiswa00("001", "Ali", "TI-1A", 3.57));
+        tree.add(new Mahasiswa00("002", "Budi", "TI-1A", 3.41));
+        tree.add(new Mahasiswa00("003", "Citra", "TI-1A", 3.75));
+        tree.add(new Mahasiswa00("004", "Dina", "TI-1A", 3.20));
+        tree.add(new Mahasiswa00("005", "Eko", "TI-1A", 3.90));
+        tree.add(new Mahasiswa00("006", "Fajar", "TI-1A", 3.60));
+        tree.add(new Mahasiswa00("007", "Gina", "TI-1A", 3.80));
 
-        Mahasiswa00[] dataMahasiswa = {
-                m1, m2, m3, m4, m5, m6, m7
-        };
+        System.out.println("=== INORDER ===");
+        tree.traverseInOrder(0);
 
-        int idxLast = 6;
-
-        bta.populateData(dataMahasiswa, idxLast);
-
-        System.out.println("Traversal InOrder:");
-        bta.traverseInOrder(0);
+        System.out.println("\n=== PREORDER ===");
+        tree.traversePreOrder(0);
     }
 }
