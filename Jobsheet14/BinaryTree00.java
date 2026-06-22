@@ -1,4 +1,5 @@
 public class BinaryTree00 {
+
     Node00 root;
 
     public BinaryTree00() {
@@ -40,14 +41,33 @@ public class BinaryTree00 {
         }
     }
 
+    public void addRekursif(Mahasiswa00 mahasiswa) {
+        root = addRekursif(root, mahasiswa);
+    }
+
+    private Node00 addRekursif(Node00 current, Mahasiswa00 mahasiswa) {
+
+        if (current == null) {
+            return new Node00(null, mahasiswa, null);
+        }
+
+        if (mahasiswa.ipk < current.mahasiswa.ipk) {
+            current.left = addRekursif(current.left, mahasiswa);
+        } else {
+            current.right = addRekursif(current.right, mahasiswa);
+        }
+
+        return current;
+    }
+
     public boolean find(double ipk) {
-        boolean result = false;
+
         Node00 current = root;
 
         while (current != null) {
+
             if (current.mahasiswa.ipk == ipk) {
-                result = true;
-                break;
+                return true;
             } else if (ipk < current.mahasiswa.ipk) {
                 current = current.left;
             } else {
@@ -55,10 +75,11 @@ public class BinaryTree00 {
             }
         }
 
-        return result;
+        return false;
     }
 
     public void traversePreOrder(Node00 node) {
+
         if (node != null) {
             node.mahasiswa.tampilInformasi();
             traversePreOrder(node.left);
@@ -67,6 +88,7 @@ public class BinaryTree00 {
     }
 
     public void traverseInOrder(Node00 node) {
+
         if (node != null) {
             traverseInOrder(node.left);
             node.mahasiswa.tampilInformasi();
@@ -75,6 +97,7 @@ public class BinaryTree00 {
     }
 
     public void traversePostOrder(Node00 node) {
+
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
@@ -82,93 +105,55 @@ public class BinaryTree00 {
         }
     }
 
-    public Node00 getSuccessor(Node00 del) {
-        Node00 successor = del.right;
-        Node00 successorParent = del;
+    public void cariMinIPK() {
 
-        while (successor.left != null) {
-            successorParent = successor;
-            successor = successor.left;
+        if (isEmpty()) {
+            System.out.println("Tree kosong");
+            return;
         }
 
-        if (successor != del.right) {
-            successorParent.left = successor.right;
-            successor.right = del.right;
+        Node00 current = root;
+
+        while (current.left != null) {
+            current = current.left;
         }
 
-        return successor;
+        System.out.println("Mahasiswa dengan IPK terkecil:");
+        current.mahasiswa.tampilInformasi();
     }
 
-    public void delete(double ipk) {
+    public void cariMaxIPK() {
+
         if (isEmpty()) {
-            System.out.println("Tree kosong!");
+            System.out.println("Tree kosong");
             return;
         }
 
-        Node00 parent = root;
         Node00 current = root;
-        boolean isLeftChild = false;
 
-        while (current != null && current.mahasiswa.ipk != ipk) {
-            parent = current;
-
-            if (ipk < current.mahasiswa.ipk) {
-                isLeftChild = true;
-                current = current.left;
-            } else {
-                isLeftChild = false;
-                current = current.right;
-            }
+        while (current.right != null) {
+            current = current.right;
         }
 
-        if (current == null) {
-            System.out.println("Data tidak ditemukan");
-            return;
-        }
+        System.out.println("Mahasiswa dengan IPK terbesar:");
+        current.mahasiswa.tampilInformasi();
+    }
 
-        if (current.left == null && current.right == null) {
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+        tampilMahasiswaIPKdiAtas(root, ipkBatas);
+    }
 
-            if (current == root) {
-                root = null;
-            } else if (isLeftChild) {
-                parent.left = null;
-            } else {
-                parent.right = null;
+    private void tampilMahasiswaIPKdiAtas(Node00 node, double ipkBatas) {
+
+        if (node != null) {
+
+            tampilMahasiswaIPKdiAtas(node.left, ipkBatas);
+
+            if (node.mahasiswa.ipk > ipkBatas) {
+                node.mahasiswa.tampilInformasi();
             }
 
-        } else if (current.right == null) {
-
-            if (current == root) {
-                root = current.left;
-            } else if (isLeftChild) {
-                parent.left = current.left;
-            } else {
-                parent.right = current.left;
-            }
-
-        } else if (current.left == null) {
-
-            if (current == root) {
-                root = current.right;
-            } else if (isLeftChild) {
-                parent.left = current.right;
-            } else {
-                parent.right = current.right;
-            }
-
-        } else {
-
-            Node00 successor = getSuccessor(current);
-
-            if (current == root) {
-                root = successor;
-            } else if (isLeftChild) {
-                parent.left = successor;
-            } else {
-                parent.right = successor;
-            }
-
-            successor.left = current.left;
+            tampilMahasiswaIPKdiAtas(node.right, ipkBatas);
         }
     }
 }
