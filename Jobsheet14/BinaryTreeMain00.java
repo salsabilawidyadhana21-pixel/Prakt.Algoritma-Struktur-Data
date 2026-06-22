@@ -1,36 +1,33 @@
 public class BinaryTreeMain00 {
+
     public static void main(String[] args) {
 
         BinaryTree00 bst = new BinaryTree00();
 
-        Mahasiswa00 m1 = new Mahasiswa00("22001", "Andi", "TI-1A", 3.75);
-        Mahasiswa00 m2 = new Mahasiswa00("22002", "Budi", "TI-1A", 3.50);
-        Mahasiswa00 m3 = new Mahasiswa00("22003", "Citra", "TI-1A", 3.90);
-        Mahasiswa00 m4 = new Mahasiswa00("22004", "Dina", "TI-1A", 3.25);
-        Mahasiswa00 m5 = new Mahasiswa00("22005", "Eko", "TI-1A", 3.60);
+        bst.addRekursif(new Mahasiswa00("001", "Ali", "TI-1A", 3.57));
+        bst.addRekursif(new Mahasiswa00("002", "Budi", "TI-1A", 3.41));
+        bst.addRekursif(new Mahasiswa00("003", "Citra", "TI-1A", 3.75));
+        bst.addRekursif(new Mahasiswa00("004", "Dina", "TI-1A", 3.20));
+        bst.addRekursif(new Mahasiswa00("005", "Eko", "TI-1A", 3.90));
+        bst.addRekursif(new Mahasiswa00("006", "Fajar", "TI-1A", 3.60));
+        bst.addRekursif(new Mahasiswa00("007", "Gina", "TI-1A", 3.80));
 
-        bst.add(m1);
-        bst.add(m2);
-        bst.add(m3);
-        bst.add(m4);
-        bst.add(m5);
+        System.out.println("=== INORDER ===");
+        bst.traverseInOrder(bst.root);
 
-        System.out.println("=== Pre Order ===");
+        System.out.println("\n=== PREORDER ===");
         bst.traversePreOrder(bst.root);
 
-        System.out.println("\n=== In Order ===");
-        bst.traverseInOrder(bst.root);
-
-        System.out.println("\n=== Post Order ===");
+        System.out.println("\n=== POSTORDER ===");
         bst.traversePostOrder(bst.root);
 
-        System.out.println("\nCari IPK 3.50");
-        System.out.println(bst.find(3.50));
+        System.out.println("\n=== IPK TERKECIL ===");
+        bst.cariMinIPK();
 
-        System.out.println("\nHapus IPK 3.50");
-        bst.delete(3.50);
+        System.out.println("\n=== IPK TERBESAR ===");
+        bst.cariMaxIPK();
 
-        System.out.println("\nData setelah dihapus");
-        bst.traverseInOrder(bst.root);
+        System.out.println("\n=== IPK DI ATAS 3.50 ===");
+        bst.tampilMahasiswaIPKdiAtas(3.50);
     }
 }
